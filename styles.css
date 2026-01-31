@@ -1,0 +1,216 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family:
+    Roboto,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #f5f5f5;
+}
+
+.deck {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide-logo {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 2;
+  line-height: 0;
+}
+
+.slide-logo svg {
+  display: block;
+  width: 40px;
+  height: auto;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 3rem 4rem 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.slide.active {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #173e87;
+}
+
+.slide h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 600;
+  color: #13cf19;
+}
+
+.slide h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.slide .subtitle,
+.slide .intro {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.slide .trainer {
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+.slide .golden-rule {
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  background: #fff8e1;
+  border-left: 4px solid #ffc107;
+  font-size: 1.1rem;
+}
+
+.slide .shortcuts {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.slide ul,
+.slide ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.5rem;
+}
+
+.slide li {
+  margin: 0.4rem 0;
+}
+
+.slide .checklist {
+  list-style: none;
+  padding-left: 0;
+}
+
+.slide .checklist .no::before {
+  content: "❌ ";
+}
+
+.slide .checklist .yes::before {
+  content: "✅ ";
+}
+
+.slide .template-box {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.slide .template-box p {
+  margin: 0.5rem 0;
+}
+
+.slide code {
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  background: #eee;
+  border-radius: 4px;
+}
+
+.slide .content {
+  margin-top: 0.5rem;
+}
+
+.slide .content h3:first-child {
+  margin-top: 0;
+}
+
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.controls button {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1565c0;
+  background: transparent;
+  border: 2px solid #1565c0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.controls button:hover:not(:disabled) {
+  background: #1565c0;
+  color: #fff;
+}
+
+.controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.indicator {
+  font-size: 0.95rem;
+  color: #666;
+  min-width: 3rem;
+  text-align: center;
+}

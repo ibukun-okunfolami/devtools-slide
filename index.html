@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Chrome DevTools for CS: Basic Issue Debugging & Evidence Collection
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="deck">
+      <div class="slide-logo" aria-hidden="true">
+        <svg width="33" height="34" viewBox="0 0 33 34" fill="none">
+          <path
+            d="M20.2324 7.13585C15.9788 7.357 12.081 9.18724 9.30685 13.1519C9.22805 13.2646 9.16281 13.4536 8.9891 13.3714C8.83828 13.301 8.87556 13.1172 8.9086 12.9774C9.44412 10.7124 10.3491 8.63732 11.837 6.80962C13.5486 4.70739 15.7127 3.29742 18.2191 2.37214C19.2732 1.98321 20.3934 1.82561 21.5008 1.67987C22.2939 1.57564 22.9591 2.0832 23.6251 2.41111C26.9551 4.04901 29.7801 6.33427 32.1222 9.21605C32.4357 9.60159 32.5306 9.97865 32.4187 10.4701C32.284 11.0683 32.2493 11.6886 32.1696 12.2986C32.1459 12.4757 32.1357 12.6994 31.9298 12.7477C31.7239 12.796 31.6926 12.5681 31.5909 12.4469C29.5327 9.91086 26.9178 8.23314 23.7369 7.50613C22.588 7.23334 21.4087 7.10918 20.2281 7.13669"
+            fill="#13CF19"
+          />
+          <path
+            d="M20.0595 26.8718C23.3768 24.1993 25.4629 20.4321 25.3875 15.5946C25.3875 15.4565 25.3282 15.2659 25.5163 15.2303C25.6798 15.1989 25.7586 15.3726 25.8129 15.5031C26.706 17.652 27.1889 19.8626 27.0542 22.2165C26.8991 24.9229 25.9722 27.3336 24.4834 29.5519C23.8572 30.484 23.0429 31.2686 22.2303 32.0363C21.6482 32.5862 20.8128 32.5642 20.0807 32.6887C16.4219 33.3124 12.7936 33.1124 9.20683 32.1541C8.72724 32.0253 8.43067 31.7779 8.23155 31.3118C7.99091 30.7483 7.65282 30.2272 7.36218 29.6841C7.27745 29.5265 7.15459 29.3392 7.2927 29.1757C7.43082 29.0122 7.59096 29.1825 7.74094 29.2231C10.8956 30.0705 13.9977 29.901 17.0006 28.6241C18.0908 28.1729 19.1188 27.584 20.0595 26.8718Z"
+            fill="#173E87"
+          />
+          <path
+            d="M27.2503 17.0677C25.7378 13.0853 22.8026 9.93403 18.1838 8.50966C18.0525 8.46899 17.8525 8.46391 17.8771 8.2741C17.8983 8.10464 18.0872 8.08769 18.2279 8.07668C20.5479 7.89365 22.8035 8.11989 24.9955 8.97824C27.5214 9.96369 29.5254 11.5923 31.1734 13.6953C31.8657 14.58 32.3597 15.5985 32.8367 16.6085C33.1757 17.3321 32.8986 18.1193 32.7901 18.8539C32.2495 22.5254 30.9387 25.9139 28.911 29.0219C28.6399 29.4388 28.3128 29.643 27.8095 29.6879C27.1986 29.7421 26.5978 29.9023 25.992 30.0099C25.8157 30.0413 25.5997 30.1006 25.4912 29.9201C25.3827 29.7396 25.5903 29.6388 25.6751 29.5083C27.4596 26.7731 28.2569 23.7701 27.9756 20.5189C27.8838 19.3421 27.6415 18.182 27.2545 17.0669"
+            fill="#173E87"
+          />
+          <path
+            d="M8.36583 22.9178C11.9246 25.2539 16.1528 26.0826 20.7369 24.5277C20.8674 24.4837 21.0318 24.3701 21.1233 24.5379C21.2029 24.6845 21.0623 24.8125 20.9538 24.904C19.1837 26.4139 17.2255 27.5519 14.9454 28.1467C12.3186 28.8305 9.74359 28.6882 7.17533 27.9527C6.09498 27.6434 5.09936 27.1053 4.11899 26.5707C3.4174 26.186 3.18184 25.3844 2.83783 24.7252C1.13667 21.4693 0.168955 17.8804 0.00264728 14.2106C-0.0219254 13.7149 0.12297 13.3565 0.50427 13.0243C0.966914 12.6219 1.35923 12.1406 1.78713 11.6974C1.91169 11.5686 2.0515 11.3941 2.24554 11.4763C2.43958 11.5585 2.33027 11.7618 2.33875 11.9169C2.49889 15.18 3.61568 18.0787 5.75096 20.5453C6.51634 21.4446 7.394 22.242 8.36244 22.9178"
+            fill="#173E87"
+          />
+          <path
+            d="M8.66048 10.7625C7.54455 14.873 8.06735 19.1511 10.9703 23.0192C11.055 23.1294 11.2127 23.2505 11.0805 23.3895C10.9661 23.5107 10.8008 23.4166 10.6805 23.3429C8.69607 22.1287 7.00988 20.6196 5.73294 18.6377C4.26875 16.3566 3.6036 13.8612 3.50531 11.1913C3.46463 10.0677 3.66461 8.95519 3.87051 7.85704C4.01879 7.06987 4.70767 6.59706 5.22624 6.06663C7.82078 3.41278 10.872 1.44103 14.3419 0.113261C14.8053 -0.0638315 15.1892 -0.0375635 15.6256 0.222568C16.1509 0.536929 16.7313 0.760624 17.2846 1.02923C17.4465 1.10718 17.6558 1.18683 17.6371 1.39697C17.6185 1.60711 17.3923 1.56644 17.2474 1.62152C14.197 2.7866 11.7863 4.74818 10.1043 7.54438C9.48811 8.55146 9.00399 9.63363 8.66387 10.7642"
+            fill="#173E87"
+          />
+        </svg>
+      </div>
+      <!-- Slide 1 — Title -->
+      <section class="slide active" data-index="0">
+        <h1>Chrome DevTools: Basic Issue Debugging for Customer Support</h1>
+        <p class="subtitle">
+          How to capture high-quality technical evidence that engineers can act
+          on
+        </p>
+        <p class="trainer">Okunfolami B. Ibukun</p>
+      </section>
+
+      <!-- Slide 2 — Why This Training Matters -->
+      <section class="slide" data-index="1">
+        <h2>Why This Training Matters</h2>
+        <div class="content">
+          <h3>Problems today</h3>
+          <ul>
+            <li>"It's not working" tickets</li>
+            <li>Engineering asks follow-up questions</li>
+            <li>Slow resolution time</li>
+          </ul>
+          <h3>What DevTools fixes</h3>
+          <ul>
+            <li>Clear proof of failure</li>
+            <li>Faster issue isolation</li>
+            <li>Fewer back-and-forth messages</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Slide 3 — What You Will Learn -->
+      <section class="slide" data-index="2">
+        <h2>What You Will Learn</h2>
+        <p class="intro">By the end of this session, you will be able to:</p>
+        <ul>
+          <li>Identify frontend vs backend issues</li>
+          <li>Capture console errors correctly</li>
+          <li>Inspect network requests & responses</li>
+          <li>Submit engineering-ready bug reports</li>
+        </ul>
+      </section>
+
+      <!-- Slide 4 — What This Training Is Not -->
+      <section class="slide" data-index="3">
+        <h2>What This Training Is Not</h2>
+        <ul class="checklist">
+          <li class="no">You are not becoming an engineer</li>
+          <li class="no">You are not fixing bugs</li>
+          <li class="yes">You are collecting evidence engineers need</li>
+        </ul>
+      </section>
+
+      <!-- Slide 5 — DevTools Overview -->
+      <section class="slide" data-index="4">
+        <h2>DevTools Overview</h2>
+        <p class="intro">Main tabs we'll use</p>
+        <ul>
+          <li><strong>Console</strong> → JavaScript errors</li>
+          <li><strong>Elements</strong> → UI / visibility issues</li>
+          <li><strong>Network</strong> → requests, responses, timing</li>
+        </ul>
+      </section>
+
+      <!-- Slide 6 — Opening DevTools -->
+      <section class="slide" data-index="5">
+        <h2>Opening DevTools</h2>
+        <ul>
+          <li>Right-click → Inspect</li>
+        </ul>
+        <p class="shortcuts"><strong>Shortcut:</strong></p>
+        <ul>
+          <li>Mac: Cmd + Option + I</li>
+          <li>Windows: Ctrl + Shift + I</li>
+        </ul>
+      </section>
+
+      <!-- Slide 7 — Console Tab (Most Important) -->
+      <section class="slide" data-index="6">
+        <h2>Console Tab (Most Important)</h2>
+        <h3>What the Console shows:</h3>
+        <ul>
+          <li>Errors (red)</li>
+          <li>Warnings (yellow)</li>
+          <li>Logs (info)</li>
+        </ul>
+        <p class="golden-rule">
+          Golden rule: <strong>If it's red, screenshot it.</strong>
+        </p>
+      </section>
+
+      <!-- Slide 8 — Common Console Errors CS Should Recognize -->
+      <section class="slide" data-index="7">
+        <h2>Common Console Errors CS Should Recognize</h2>
+        <ul>
+          <li>Uncaught TypeError</li>
+          <li>Failed to fetch</li>
+          <li>CORS error</li>
+          <li>401 / 403 authorization errors</li>
+        </ul>
+      </section>
+
+      <!-- Slide 9 — Console Exercise (Live) -->
+      <section class="slide" data-index="8">
+        <h2>Console Exercise (Live)</h2>
+        <h3>Task:</h3>
+        <ul>
+          <li>Open Console</li>
+          <li>Trigger an error</li>
+          <li>Copy exact error message</li>
+        </ul>
+      </section>
+
+      <!-- Slide 10 — Elements Tab (UI Issues) -->
+      <section class="slide" data-index="9">
+        <h2>Elements Tab (UI Issues)</h2>
+        <p class="intro">Use Elements to:</p>
+        <ul>
+          <li>Check if a button exists</li>
+          <li>See if it's hidden (<code>display: none</code>)</li>
+          <li>See if it's disabled</li>
+        </ul>
+      </section>
+
+      <!-- Slide 11 — When to Use Elements -->
+      <section class="slide" data-index="10">
+        <h2>When to Use Elements</h2>
+        <h3>Examples:</h3>
+        <ul>
+          <li>"Button is missing"</li>
+          <li>"Text is wrong"</li>
+          <li>"Page layout is broken"</li>
+        </ul>
+      </section>
+
+      <!-- Slide 12 — Application Tab (Auth Issues) -->
+      <section class="slide" data-index="11">
+        <h2>Application Tab (Auth Issues)</h2>
+        <h3>Check:</h3>
+        <ul>
+          <li>Local Storage</li>
+          <li>Cookies</li>
+          <li>Access token presence</li>
+        </ul>
+        <h3>Used for:</h3>
+        <ul>
+          <li>Login problems</li>
+          <li>Session expiry issues</li>
+        </ul>
+      </section>
+
+      <!-- Slide 13 — Network Tab Mental Model -->
+      <section class="slide" data-index="12">
+        <h2>Network Tab Mental Model</h2>
+        <ul>
+          <li>Every user action = a network request</li>
+          <li>If nothing shows → frontend issue</li>
+          <li>If request fails → backend or auth issue</li>
+        </ul>
+      </section>
+
+      <!-- Slide 14 — How to Capture Network Requests -->
+      <section class="slide" data-index="13">
+        <h2>How to Capture Network Requests</h2>
+        <h3>Steps:</h3>
+        <ol>
+          <li>Open Network tab</li>
+          <!-- <li>Enable Preserve log</li> -->
+          <li>Perform the action</li>
+          <li>Filter by Fetch/XHR</li>
+        </ol>
+      </section>
+
+      <!-- Slide 15 — Understanding a Request -->
+      <section class="slide" data-index="14">
+        <h2>Understanding a Request</h2>
+        <p class="intro">What engineers care about:</p>
+        <ul>
+          <li>Endpoint (URL)</li>
+          <li>Method (GET / POST)</li>
+          <li>Status code</li>
+          <li>Response message</li>
+        </ul>
+      </section>
+
+      <!-- Slide 16 — Status Codes CS Must Know -->
+      <section class="slide" data-index="15">
+        <h2>Status Codes CS Must Know</h2>
+        <ul>
+          <li><strong>200</strong> — OK (success)</li>
+          <li><strong>400</strong> — Bad Request</li>
+          <li><strong>401</strong> — Unauthorized (login/session)</li>
+          <li><strong>403</strong> — Forbidden (no permission)</li>
+          <li><strong>404</strong> — Not Found</li>
+          <li><strong>500</strong> — Server error</li>
+        </ul>
+      </section>
+
+      <!-- Slide 17 — Timing & Performance -->
+      <section class="slide" data-index="16">
+        <h2>Timing & Performance</h2>
+        <h3>Signs of issues:</h3>
+        <ul>
+          <li>Pending / stalled requests</li>
+          <li>Very slow responses (&gt;5s)</li>
+        </ul>
+      </section>
+
+      <!-- Slide 18 — Network Exercise (Live) -->
+      <section class="slide" data-index="17">
+        <h2>Network Exercise (Live)</h2>
+        <h3>Scenario:</h3>
+        <p>"User clicks Pay, nothing happens"</p>
+        <h3>Find:</h3>
+        <ul>
+          <li>Did request fire?</li>
+          <li>Status code?</li>
+          <li>Response body?</li>
+        </ul>
+      </section>
+
+      <!-- Slide 19 — What Engineers Need (Minimum) -->
+      <section class="slide" data-index="18">
+        <h2>What Engineers Need (Minimum)</h2>
+        <p class="intro">A bug report must include:</p>
+        <ul>
+          <li>Steps to reproduce</li>
+          <li>Expected vs actual result</li>
+          <li>Console evidence</li>
+          <li>Network evidence</li>
+        </ul>
+      </section>
+
+      <!-- Slide 20 — Perfect Bug Report Template -->
+      <section class="slide" data-index="19">
+        <h2>Perfect Bug Report Template</h2>
+        <p class="intro">(Show template – copyable)</p>
+        <div class="template-box">
+          <p><strong>Steps to reproduce:</strong></p>
+          <p><strong>Expected:</strong></p>
+          <p><strong>Actual:</strong></p>
+          <p><strong>Console/Network evidence:</strong></p>
+        </div>
+      </section>
+
+      <!-- Slide 21 — Good vs Bad Bug Report -->
+      <section class="slide" data-index="20">
+        <h2>Good vs Bad Bug Report</h2>
+        <ul class="checklist">
+          <li class="no">"Payment not working"</li>
+          <li class="yes">"POST /payment failed with 401 – token expired"</li>
+        </ul>
+      </section>
+
+      <!-- Slide 22 — Key Takeaways -->
+      <section class="slide" data-index="21">
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>DevTools = evidence, not fixing</li>
+          <li>Network tab is king</li>
+          <li>Screenshots &gt; descriptions</li>
+          <li>Better tickets = faster fixes</li>
+        </ul>
+      </section>
+
+      <!-- Slide 23 — Thank You / Q&A -->
+      <section class="slide" data-index="22">
+        <h2>Thank You / Q&A</h2>
+        <!-- <h3>Resources:</h3>
+        <ul>
+          <li>Recording</li>
+          <li>Playbook</li>
+          <li>Bug template</li>
+        </ul> -->
+      </section>
+    </main>
+
+    <nav class="controls">
+      <button type="button" id="prev" aria-label="Previous slide" disabled>
+        Previous
+      </button>
+      <span class="indicator" id="indicator">1 / 23</span>
+      <button type="button" id="next" aria-label="Next slide">Next</button>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
+</html>
