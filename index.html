@@ -47,7 +47,7 @@
           How to capture high-quality technical evidence that engineers can act
           on
         </p>
-        <p class="trainer">Okunfolami B. Ibukun</p>
+        <p class="trainer">Okunfolami B. Ibukun (Senior Frontend Engineer)</p>
       </section>
 
       <!-- Slide 2 — Why This Training Matters -->
@@ -118,6 +118,11 @@
       <!-- Slide 7 — Console Tab (Most Important) -->
       <section class="slide" data-index="6">
         <h2>Console Tab (Most Important)</h2>
+        <img
+          src="img/console.png"
+          alt="Chrome DevTools Console tab showing errors, warnings, and Uncaught TypeError"
+          class="slide-img"
+        />
         <h3>What the Console shows:</h3>
         <ul>
           <li>Errors (red)</li>
@@ -141,7 +146,7 @@
       </section>
 
       <!-- Slide 9 — Console Exercise (Live) -->
-      <section class="slide" data-index="8">
+      <!-- <section class="slide" data-index="8">
         <h2>Console Exercise (Live)</h2>
         <h3>Task:</h3>
         <ul>
@@ -149,7 +154,7 @@
           <li>Trigger an error</li>
           <li>Copy exact error message</li>
         </ul>
-      </section>
+      </section> -->
 
       <!-- Slide 10 — Elements Tab (UI Issues) -->
       <section class="slide" data-index="9">
@@ -174,7 +179,7 @@
       </section>
 
       <!-- Slide 12 — Application Tab (Auth Issues) -->
-      <section class="slide" data-index="11">
+      <!-- <section class="slide" data-index="11">
         <h2>Application Tab (Auth Issues)</h2>
         <h3>Check:</h3>
         <ul>
@@ -187,7 +192,7 @@
           <li>Login problems</li>
           <li>Session expiry issues</li>
         </ul>
-      </section>
+      </section> -->
 
       <!-- Slide 13 — Network Tab Mental Model -->
       <section class="slide" data-index="12">
@@ -211,8 +216,37 @@
         </ol>
       </section>
 
-      <!-- Slide 15 — Understanding a Request -->
+      <!-- Slide 15 — The Network Tab -->
       <section class="slide" data-index="14">
+        <h2>The Network Tab</h2>
+        <img
+          src="img/Screenshot%202026-01-31%20at%2011.49.54.png"
+          alt="Chrome DevTools Network tab showing requests and Fetch/XHR filter"
+          class="slide-img"
+        />
+        <div class="network-legend">
+          <p>
+            <strong>Yellow:</strong> The Network tab is selected. The
+            <strong>Fetch/XHR</strong> filter (bottom) is active—only Fetch and
+            XHR requests are shown, so you can focus on API calls.
+          </p>
+          <p>
+            <strong>Green:</strong> Successful requests (e.g.
+            <code>get-cart-value</code>, <code>get-cart-details</code>) with
+            <strong>Status 200</strong> (OK). These are xhr requests; Size and
+            Time show how much data and how long they took.
+          </p>
+          <p>
+            <strong>Red:</strong> Failed requests (e.g.
+            <code>get-wallet-balance</code>, <code>get-paylater-balance</code>)
+            with <strong>Status 400</strong> (Bad Request). The red X means the
+            server rejected the request—often due to invalid or missing data.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 16 — Understanding a Request -->
+      <section class="slide" data-index="15">
         <h2>Understanding a Request</h2>
         <p class="intro">What engineers care about:</p>
         <ul>
@@ -223,8 +257,31 @@
         </ul>
       </section>
 
-      <!-- Slide 16 — Status Codes CS Must Know -->
-      <section class="slide" data-index="15">
+      <!-- Slide — Important screenshots for a failed API request -->
+      <section class="slide" data-index="16">
+        <h2>Important screenshots to take for a failed API request</h2>
+        <div class="screenshot-grid">
+          <figure>
+            <img src="img/err-1.png" alt="API Endpoint" class="slide-img" />
+            <figcaption><strong>The API Endpoint</strong></figcaption>
+          </figure>
+          <figure>
+            <img src="img/err-2.png" alt="Request Header" class="slide-img" />
+            <figcaption><strong>Header</strong></figcaption>
+          </figure>
+          <figure>
+            <img src="img/err-3.png" alt="Request Payload" class="slide-img" />
+            <figcaption><strong>Payload</strong></figcaption>
+          </figure>
+          <figure>
+            <img src="img/err-4.png" alt="Response" class="slide-img" />
+            <figcaption><strong>Response</strong></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Slide 17 — Status Codes CS Must Know -->
+      <section class="slide" data-index="17">
         <h2>Status Codes CS Must Know</h2>
         <ul>
           <li><strong>200</strong> — OK (success)</li>
@@ -236,7 +293,7 @@
         </ul>
       </section>
 
-      <!-- Slide 17 — Timing & Performance -->
+      <!-- Slide 18 — Timing & Performance -->
       <section class="slide" data-index="16">
         <h2>Timing & Performance</h2>
         <h3>Signs of issues:</h3>
@@ -246,8 +303,8 @@
         </ul>
       </section>
 
-      <!-- Slide 18 — Network Exercise (Live) -->
-      <section class="slide" data-index="17">
+      <!-- Slide 19 — Network Exercise (Live) -->
+      <!-- <section class="slide" data-index="17">
         <h2>Network Exercise (Live)</h2>
         <h3>Scenario:</h3>
         <p>"User clicks Pay, nothing happens"</p>
@@ -257,9 +314,9 @@
           <li>Status code?</li>
           <li>Response body?</li>
         </ul>
-      </section>
+      </section> -->
 
-      <!-- Slide 19 — What Engineers Need (Minimum) -->
+      <!-- Slide 20 — What Engineers Need (Minimum) -->
       <section class="slide" data-index="18">
         <h2>What Engineers Need (Minimum)</h2>
         <p class="intro">A bug report must include:</p>
@@ -271,7 +328,7 @@
         </ul>
       </section>
 
-      <!-- Slide 20 — Perfect Bug Report Template -->
+      <!-- Slide 21 — Perfect Bug Report Template -->
       <section class="slide" data-index="19">
         <h2>Perfect Bug Report Template</h2>
         <p class="intro">(Show template – copyable)</p>
@@ -283,7 +340,7 @@
         </div>
       </section>
 
-      <!-- Slide 21 — Good vs Bad Bug Report -->
+      <!-- Slide 22 — Good vs Bad Bug Report -->
       <section class="slide" data-index="20">
         <h2>Good vs Bad Bug Report</h2>
         <ul class="checklist">
@@ -292,7 +349,7 @@
         </ul>
       </section>
 
-      <!-- Slide 22 — Key Takeaways -->
+      <!-- Slide 23 — Key Takeaways -->
       <section class="slide" data-index="21">
         <h2>Key Takeaways</h2>
         <ul>
@@ -303,7 +360,7 @@
         </ul>
       </section>
 
-      <!-- Slide 23 — Thank You / Q&A -->
+      <!-- Slide 24 — Thank You / Q&A -->
       <section class="slide" data-index="22">
         <h2>Thank You / Q&A</h2>
         <!-- <h3>Resources:</h3>
